@@ -104,7 +104,7 @@ html, body {
 .bid-container .btn {
     padding: 8px 12px;  /* Reduce padding */
     font-size: 14px;  /* Reduce font size */
-    height: 40px;  /* Adjust height */
+    height: 30px;  /* Adjust height */
     margin-bottom: 5px;
 }
 
