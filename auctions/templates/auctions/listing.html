@@ -5,8 +5,7 @@
 
 
 
-<div id="single-listing">
-    
+<div id="single-listing">    
 
     <h5 id="listing-header"><strong>{{listing.title}}</strong></h5>
 
@@ -58,41 +57,41 @@
     </div>
 </div>
 
-        <div class="bid-container">
-            {% if user.is_authenticated and user != listing.seller and listing.status == "active" %}
-                <form action="{% url 'placebid' listing.id%}" method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="number" name="bidamount" placeholder="Bid" required>
-                    </div>
-                    <input class="btn btn-primary" type="submit" value="Place bid">
-                </form>
-            {% endif %}
+<div class="bid-container">
+    {% if user.is_authenticated and user != listing.seller and listing.status == "active" %}
+        <form action="{% url 'placebid' listing.id%}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="number" name="bidamount" placeholder="Bid" required>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Place bid">
+        </form>
+    {% endif %}
 
-            {% if user.is_authenticated and user != listing.seller and listing.status == "active" %}
-                {% if in_watchlist %}
-                    <form action="{% url 'removewatchlist' listing.id %}" method="post">
-                        {% csrf_token %}
-                        <button class="btn btn-primary" type="submit">Remove from Watchlist</button>
-                    </form>
+    {% if user.is_authenticated and user != listing.seller and listing.status == "active" %}
+        {% if in_watchlist %}
+            <form action="{% url 'removewatchlist' listing.id %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Remove from Watchlist</button>
+            </form>
 
-                {% else %}
-                    <form action="{% url 'addwatchlist' listing.id %}" method="post">
-                        {% csrf_token %}
-                        <button class="btn btn-primary" type="submit">Add to Watchlist</button>
-                    </form>
-                    
-                {% endif %}
-            {% endif %}
-
-            {% if user.is_authenticated  and listing.seller == request.user and listing.status == "active" %}
-                <form action="{% url 'closebidding' listing.id %}" method="post">
-                    {% csrf_token %}
-                    <button id="close-bidding-button" class="btn btn-primary" type="submit" >Close Bidding</button>
-                </form>                
-            {% endif %}
+        {% else %}
+            <form action="{% url 'addwatchlist' listing.id %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Add to Watchlist</button>
+            </form>
             
-        </div>   
+        {% endif %}
+    {% endif %}
+
+    {% if user.is_authenticated  and listing.seller == request.user and listing.status == "active" %}
+        <form action="{% url 'closebidding' listing.id %}" method="post">
+            {% csrf_token %}
+            <button id="close-bidding-button" class="btn btn-primary" type="submit" >Close Bidding</button>
+        </form>                
+    {% endif %}
+    
+</div>   
 
     <h5> <strong>Comments</strong> </h5>
     <div id="comment-section-container">

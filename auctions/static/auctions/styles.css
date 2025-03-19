@@ -92,6 +92,7 @@ html, body {
     gap: 10px;
     margin-top: 5px;
     flex-wrap: wrap;
+    margin: 10px auto;
 }
 
 .bid-container form {
@@ -202,6 +203,11 @@ html, body {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
+
+#comment-section-container {
+    margin: 10px auto;
+}
+
 
 #comment-section-container li {
     list-style-type: none;
