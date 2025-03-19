@@ -93,29 +93,30 @@
     
 </div>   
 
+    
+<div id="comment-section-container">
     <h5> <strong>Comments</strong> </h5>
-    <div id="comment-section-container">
-        {% if comments %}
-            {% for comment in comments %}
-                <li>
-                    <strong>{{ comment.user }}:</strong>
-                    <span><em>{{ comment.comment }}</em></span><br>
-                    <span id="time_stamp">({{ comment.comment_date }})</span>
-                </li>
-            {% endfor %} 
-        {%else%}
-            <p>No Comments</p> 
-        {% endif %}
-    </div>
+    {% if comments %}
+        {% for comment in comments %}
+            <li>
+                <strong>{{ comment.user }}:</strong>
+                <span><em>{{ comment.comment }}</em></span><br>
+                <span id="time_stamp">({{ comment.comment_date }})</span>
+            </li>
+        {% endfor %} 
+    {%else%}
+        <p>No Comments</p> 
+    {% endif %}
+</div>
 
-    <div id="comment">
-        {% if user.is_authenticated and listing.status == "active" %}
-            <a href="{% url 'addcomment' listing.id %}">
-                {% csrf_token %}
-                <button class="btn btn-primary" type="submit">Comment</button>
-            </a>
-        {% endif %}
-    </div>
+<div id="comment">
+    {% if user.is_authenticated and listing.status == "active" %}
+        <a href="{% url 'addcomment' listing.id %}">
+            {% csrf_token %}
+            <button class="btn btn-primary" type="submit">Comment</button>
+        </a>
+    {% endif %}
+</div>
 
     <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
     
