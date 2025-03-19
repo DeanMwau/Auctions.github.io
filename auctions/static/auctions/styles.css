@@ -146,7 +146,7 @@ html, body {
 
 @media (max-width: 768px) {
     #listing-container .col-form-label.text-end {
-        text-align: left;
+        text-align: left !important;
     }
 }
 
