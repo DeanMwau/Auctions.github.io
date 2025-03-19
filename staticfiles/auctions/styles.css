@@ -5,7 +5,7 @@ body {
 html, body {
     font-family: 'PT Sans', sans-serif;
     background-color: #D9DEE1;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /* Styles all messages in the project (both success and error)*/
