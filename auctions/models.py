@@ -10,7 +10,8 @@ class UserProfile(models.Model):
     location = models.CharField(max_length=255, blank=True, null=True)  
 
     def save(self, *args, **kwargs):
-        self.location = self.location.strip()
+        if self.location:
+            self.location = self.location.strip()
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -43,8 +44,10 @@ class Listings(models.Model):
             raise ValidationError("Starting price cannot be negative.")
         
     def save(self, *args, **kwargs):
-        self.category = self.category.strip()
-        self.location = self.location.strip()
+        if self.category:
+            self.category = self.category.strip()
+        if self.location:
+            self.location = self.location.strip()
         super().save(*args, **kwargs)
 
     class Meta:
