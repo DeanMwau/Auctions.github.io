@@ -544,6 +544,11 @@ hr {
         height: 200px; 
     }
 
+    .most-bid-item .most-bid-image {
+        width: 100%; 
+        height: 200px; 
+    }
+
     .index-listing .listing-item div {
         padding-left: 0; 
     }
