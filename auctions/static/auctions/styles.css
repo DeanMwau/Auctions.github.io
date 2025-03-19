@@ -16,8 +16,10 @@ html, body {
     background: #fff3cd;
     border-radius: 5px;
     list-style: none;
-    width: 100%;
+    width: 95%;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .message.error {
@@ -27,7 +29,9 @@ html, body {
     background: #fff3cd;
     border-radius: 5px;
     list-style: none;
-    width: 100%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .message.success {
@@ -37,8 +41,10 @@ html, body {
     background: #fff3cd;
     border-radius: 5px;
     list-style: none;
-    width: 100%;
+    width: 95%;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form-group {
@@ -53,7 +59,7 @@ html, body {
 }
 
 .form-input {
-    width: 50%;
+    width: 90%;
     padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -68,15 +74,16 @@ html, body {
 }
 
 #add-button {
-    padding: 5px 8px;
+    padding: 8px 12px;
     cursor: pointer;
-    font-size: 12px;
-    padding: 5px;
-    height: 30px;
+    font-size: 14px;
+    height: 40px;
 }
 
 .listing-image {
     margin: 15px;
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto;
 }
 
 .bid-container {
@@ -84,18 +91,20 @@ html, body {
     align-items: center;
     gap: 10px;
     margin-top: 5px;
+    flex-wrap: wrap;
 }
 
 .bid-container form {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .bid-container .btn {
-    padding: 5px 8px;  /* Reduce padding */
-    font-size: 12px;  /* Reduce font size */
-    height: 30px;  /* Adjust height */
+    padding: 8px 12px;  /* Reduce padding */
+    font-size: 14px;  /* Reduce font size */
+    height: 40px;  /* Adjust height */
     margin-bottom: 5px;
 }
 
@@ -105,20 +114,21 @@ html, body {
 
 .bid-container input[type="number"] {
     margin-top: 10px;
-    padding: 4px;    
-    font-size: 12px;
+    padding: 8px;    
+    font-size: 14px;
+    width: 80px;
 }
 
 #time_stamp {
-    font-size: smaller; 
+    font-size: 14px;
     color: gray;
 }
 
 #comment button {
     margin-top: 10px;
-    font-size: 12px;
-    padding: 5px;
-    height: 30px;
+    font-size: 14px;
+    padding: 8px 12px;
+    height: 40px;
 }
 
 #listing-container .form-group {
@@ -133,9 +143,9 @@ html, body {
 #addcomment button, 
 #change-details button {
     margin-top: 2px;
-    font-size: 12px;
-    padding: 5px;
-    height: 30px;
+    font-size: 14px;
+    padding: 8px 12px;
+    height: 40px;
     border-color: none;
 }
 
@@ -153,7 +163,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 95%;
     max-width: 500px; /* Adjust width as needed */
     margin: 15px auto;
     padding: 20px;
@@ -168,8 +178,8 @@ html, body {
 }
 
 #add-comment-container textarea {
-    width: 100%;
-    min-height: 100px;
+    width: 95%;
+    min-height: 120px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -196,6 +206,7 @@ html, body {
     text-align: center;
     display: block;  
     font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .navbar {
@@ -221,6 +232,7 @@ html, body {
 
 .navbar-dark .navbar-brand {
     color: rgb(0, 123, 255);
+    font-size: 1.3rem; 
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
@@ -248,12 +260,12 @@ html, body {
 #info p strong, 
 #security p strong {
     color: #868C90;
-    font-size: small;
+    font-size: 1rem;
 }
 
 #active li, 
 #closed li  {
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .account-container {
@@ -263,9 +275,9 @@ html, body {
 
 .account-container div {
     max-width: 1100px; /* Limits the width of the divs */
-    width: 100%; /* Ensures responsiveness */
+    width: 95%; /* Ensures responsiveness */
     margin: 15px auto; /* Centers divs and adds spacing */
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
 }
 
@@ -280,13 +292,13 @@ html, body {
 hr {
     background-color:black;
     margin: 5px 0;
-    max-width: 70%;
+    max-width: 90%;
 }
 
 #active hr {
     background-color:black;
     margin-top: 2px;
-    max-width: 70%;
+    max-width: 90%;
 }
 
 #active #first-hr {
@@ -297,13 +309,14 @@ hr {
 #info p strong, 
 #security p strong {
     display: inline-block;
-    min-width: 350px; /* Adjust this as needed */
+    min-width: 300px; /* Adjust this as needed */
+    font-size: 1rem;
 }
 
 #active a {
     display: inline-block;
-    min-width: 230px; /* Adjust this as needed */
-    font-size: 16px;
+    min-width: 200px; /* Adjust this as needed */
+    font-size: 1rem;
     font-weight: 400;
 }
 
@@ -316,12 +329,10 @@ hr {
     #info p strong, 
     #security p strong {
         display: inline-block;
-        min-width: 200px; /* Adjust this as needed */
+        min-width: 150px; /* Adjust this as needed */
     }
-}
 
-@media screen and (max-width: 768px) {
-     #active a {
+    #active a {
         display: inline-block;
         min-width: 150px; /* Adjust this as needed */
     }
@@ -332,6 +343,7 @@ hr {
 #security p,
 #active a {
     margin-bottom: 3px; /* Adds spacing between rows */
+    font-size: 1rem;
 }
 
 #first-hr {
@@ -349,7 +361,7 @@ hr {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 95%;
     max-width: 600px; /* Adjust width as needed */
     margin: 10px auto;
     padding: 20px;
@@ -360,9 +372,9 @@ hr {
 }
 
 #change-details {
-    width: 99.5%; /* Ensures form container stretches full width */
+    width: 100%; /* Ensures form container stretches full width */
     display: flex;
-    margin-left: 4px;
+    margin-left: 0;
 }
 
 #change-details form {
@@ -378,9 +390,10 @@ hr {
 #change-details form input {
     flex: 2; /* Inputs take up more space than labels */
     width: 100%; /* Ensures fields stretch */
-    padding: 5px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1rem;
 }
 
 #change-details form input:focus {
@@ -394,6 +407,8 @@ hr {
     outline: none;
     border-color: rgb(204, 204, 204); 
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    font-size: 1rem;
+    padding: 7px;
 }
 
 .bid-container form input:focus {
@@ -408,14 +423,15 @@ hr {
     background-color: #f8f9fa; 
     border-radius: 15px;
     display: flex;
-    width: 100%;
+    width: 95%;
     box-sizing: border-box;
     border: 1px solid #eee;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px auto;
 }
 
 .most-bid-image {
-    width: 200px;
+    width: 150px;
     object-fit: cover;
     padding: 5px;
     box-sizing: border-box;
@@ -432,6 +448,8 @@ hr {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    width: 95%;
+    margin: 10px auto;
 }
 
 .listing-grid .listing-item {
@@ -456,6 +474,8 @@ hr {
     display: flex;
     flex-direction: column; 
     gap: 20px; 
+    width: 95%;
+    margin: 10px auto;
 } 
 
 .index-listing .listing-item {
@@ -497,7 +517,7 @@ hr {
 }
 
 .index-listing .listing-image {
-    width: 200px;
+    width: 180px;
     object-fit: cover;
     padding: 5px;
     box-sizing: border-box;
@@ -511,7 +531,8 @@ hr {
 }
 
 .listing-item-details * {
-    margin-bottom: 8px; 
+    margin-bottom: 10px; 
+    font-size: 1rem; 
 }
 
 
@@ -535,7 +556,7 @@ hr {
 .edit-container {
     display: flex;
     flex-direction: column;  
-    width: 100%;
+    width: 95%;
     max-width: 600px; /* Adjust width as needed */
     margin: 10px auto;
     padding: 20px;
@@ -557,20 +578,24 @@ hr {
 }
 
 .edit-container label {
-    width: 30%; /* Adjust as needed */
+    width: 100%; /* Adjust as needed */
     text-align: left;
     font-weight: bold;
+    font-size: 1rem; 
+    margin-bottom: 5px;
 }
 
 .edit-container textarea {
-    max-height: 120px;  
+    max-height: 150px;  
+    font-size: 1rem; 
 
 }
 
-.edit-container input, .edit-container textarea {
-    width: 70%; /* Ensure all inputs have the same width */
+.edit-container input, 
+.edit-container textarea {
+    width: 100%; /* Ensure all inputs have the same width */
     font-size: 1rem;
-    padding: 8px;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #ced4da;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -586,22 +611,25 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1px; /* Space between label & input */
-    margin-bottom: 5px;
+    gap: 5px; /* Space between label & input */
+    margin-bottom: 10px;
 }
 
 #make-changes .form-group label {
-    width: 30%;
+    width: 100%;
     text-align: left;
     font-weight: bold;
+     font-size: 1rem; 
 }
 
 #make-changes .form-group input, 
 #make-changes .form-group textarea {
-    width: 70%;
-    padding: 7px;
+    width: 100%;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #ced4da;
+    font-size: 1rem; 
+    box-sizing: border-box;
 }
 
 .button-container {
