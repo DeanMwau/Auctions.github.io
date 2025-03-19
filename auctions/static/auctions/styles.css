@@ -535,21 +535,19 @@ hr {
 }
 
 @media (max-width: 768px) {
-    .index-listing .listing-item {
+    .index-listing .listing-item,
+    .most-bid-item {
         flex-direction: column;
     }
 
-    .index-listing .listing-image {
-        width: 100%; 
-        height: 200px; 
-    }
-
+    .index-listing .listing-image,
     .most-bid-item .most-bid-image {
         width: 100%; 
         height: 200px; 
     }
 
-    .index-listing .listing-item div {
+    .index-listing .listing-item div,
+    .most-bid-item div {
         padding-left: 0; 
     }
 }
