@@ -26,13 +26,13 @@
                     {% if listing.status == "closed" %}
 
                         {% if winning_bids|get_item:listing.id %}
-                        <p {% if user_won_listings|get_item:listing.id %} class="winner-text" {% endif %}>
+                        <p>
                             <strong>Winning Bid Was:</strong> 
 
                             ${{ winning_bids|get_item:listing.id }}
 
                             {% if user_won_listings|get_item:listing.id %}
-                                (You were the winner)
+                                <span class="winner-text">(You were the winner)</span>
                             {% endif %}    
                         </p>
                         {% else %}
