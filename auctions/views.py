@@ -81,6 +81,10 @@ def register(request):
         if not username:
             messages.error(request, "You must provide a unique username.")
             return redirect("register")
+        
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already taken.")
+            return redirect("register")
 
         # Attempt to create new user
         try:
