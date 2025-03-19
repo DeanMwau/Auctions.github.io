@@ -36,7 +36,9 @@
                         
                         </p>
                         {% else %}
+
                         <p><strong>Bids: </strong>No Bids Yet
+                            
                         {% endif %}
                     {% else %}
                             {% if winning_bids|get_item:listing.id %}
@@ -53,7 +55,7 @@
             {% endfor %}
 
         {% else %}
-        
+
             <p> No listing in your watchlist</p>
 
         {% endif %}
