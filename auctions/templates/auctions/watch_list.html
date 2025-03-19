@@ -32,25 +32,24 @@
 
                             {% if user_won_listings|get_item:listing.id %}
                                 (You were the winner)
-                            {% endif %}
-                        
+                            {% endif %}    
                         </p>
                         {% else %}
 
-                        <p><strong>Bids: </strong>No Bids Yet
+                        <p><strong>Bids: </strong>No Bids Yet</p>
                             
                         {% endif %}
+                        <p><strong>Status: </strong> {{ listing.status }}</p>
                     {% else %}
-                            {% if winning_bids|get_item:listing.id %}
-                            <p><strong>Current Price/Highest Bid:</strong> ${{ winning_bids|get_item:listing.id }}</p>
-                            {% else %}
-                            <p><strong>Bids:</strong> No Bids Yet</p>
-                            {% endif %}
-                    
-                    {% endif %}                  
-                    
-                </div>
+                        {% if winning_bids|get_item:listing.id %}
+                        <p><strong>Current Price/Highest Bid:</strong> ${{ winning_bids|get_item:listing.id }}</p>
+                        {% else %}
+                        <p><strong>Bids:</strong> No Bids Yet</p>
+                        {% endif %}
+                        <p><strong>Status: </strong> {{ listing.status }}</p>
 
+                    {% endif %}                 
+                </div>
             </div>
             {% endfor %}
 
