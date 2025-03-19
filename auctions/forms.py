@@ -1,6 +1,6 @@
 from django import forms
 from .models import UserProfile, Listings
-from django.contrib.auth.models import User
+from .models import User
 
 
 class UserProfileForm(forms.ModelForm):
