@@ -487,6 +487,10 @@ hr {
     margin: 10px auto;
 } 
 
+.winner-text {
+    color: rgb(0, 123, 255);
+}
+
 .index-listing .listing-item {
     padding: 15px;
     background-color: #f8f9fa; 
