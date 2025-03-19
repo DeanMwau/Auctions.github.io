@@ -140,8 +140,12 @@ html, body {
     margin-top: 10px;
 }
 
+#listing-container .col-form-label.text-end {
+    text-align: right;
+}
+
 @media (max-width: 768px) {
-    .col-form-label.text-end {
+    #listing-container .col-form-label.text-end {
         text-align: left;
     }
 }
