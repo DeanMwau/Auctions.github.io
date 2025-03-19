@@ -91,8 +91,7 @@ def register(request):
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
         except IntegrityError as e:
-            print(f"IntegrityError during registration: {e}") #print the error.
-            messages.error(request, "An unexpected error occurred.")
+            messages.error(request, str(e))
             return redirect("register")        
         
     else:
