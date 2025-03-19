@@ -151,6 +151,14 @@ html, body {
     }
 }
 
+@media (min-width: 768px) {
+    .bid-container, 
+    #comment-section-container,
+    #comment {
+        margin-left: 20px;
+    }
+}
+
 #addcomment button, 
 #change-details button {
     margin-top: 2px;
