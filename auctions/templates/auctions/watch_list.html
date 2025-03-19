@@ -18,31 +18,44 @@
                 {% endif %}
 
                 <div class="listing-item-details">
-                <h5><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h5>
+                    <h5><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h5>
 
-                <p> {{listing.description}} </p>
-                <p><strong>Starting Bid:</strong> ${{ listing.starting_price }}</p>
+                    <p> {{listing.description}} </p>
+                    <p><strong>Starting Bid:</strong> ${{ listing.starting_price }}</p>
 
-                {% if winning_bids|get_item:listing.id %}
-                <p><strong>Winning Bid Was:</strong> 
+                    {% if listing.status == "closed" %}
 
-                    ${{ winning_bids|get_item:listing.id }}
+                        {% if winning_bids|get_item:listing.id %}
+                        <p><strong>Winning Bid Was:</strong> 
 
-                    {% if user_won_listings|get_item:listing.id %}
-                        (You were the winner)
-                    {% endif %}
-                
-                </p>
-                {% else %}
-                <p><strong>Bids: </strong>No Bids Yet
-                {% endif %}
-                
-                <p><strong>Status:</strong> {{ listing.status }}</p>
+                            ${{ winning_bids|get_item:listing.id }}
+
+                            {% if user_won_listings|get_item:listing.id %}
+                                (You were the winner)
+                            {% endif %}
+                        
+                        </p>
+                        {% else %}
+                        <p><strong>Bids: </strong>No Bids Yet
+                        {% endif %}
+                    {% else %}
+                            {% if winning_bids|get_item:listing.id %}
+                            <p><strong>Current Price/Highest Bid:</strong> ${{ winning_bids|get_item:listing.id }}</p>
+                            {% else %}
+                            <p><strong>Bids:</strong> No Bids Yet</p>
+                            {% endif %}
+                    
+                    {% endif %}                  
+                    
                 </div>
+
             </div>
             {% endfor %}
+
         {% else %}
+        
             <p> No listing in your watchlist</p>
+
         {% endif %}
     </div>
 </div>
