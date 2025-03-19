@@ -1,0 +1,83 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    {% if request.resolver_match.view_name == 'change_profile' %}
+    <h5 id="listing-header"><strong>Profile Details</strong></h5>
+    {% elif request.resolver_match.view_name == 'change_email' %}
+    <h5 id="listing-header"><strong>Email Details</strong></h5>
+    {% elif request.resolver_match.view_name == 'change_password' %}
+    <h5 id="listing-header"><strong>Security Details</strong></h5>
+    {% endif %}
+
+<div id="change-details-container">   
+
+    {% if messages or form.old_password.errors or form.new_password1.errors or form.new_password2.errors %}
+        <ul class="messages list-unstyled">
+            {% for message in messages %}
+            <li class="message {% if message.tags %} {{ message.tags }} {% endif %}">{{ message }}</li>
+            {% endfor %}
+
+            {% if request.resolver_match.view_name == 'change_password' %}
+        
+                {% if form.old_password.errors or form.new_password1.errors or form.new_password2.errors %}
+                <li class="message error">
+                    {% if form.old_password.errors and form.new_password1.errors and form.new_password2.errors %}
+                    All fields are required.
+                    {% else %}
+                    {% if form.old_password.errors %} {{ form.old_password.errors.0 }} {% endif %}
+                    {% if form.new_password1.errors %} {{ form.new_password1.errors.0 }} {% endif %}
+                    {% if form.new_password2.errors %} {{ form.new_password2.errors.0 }} {% endif %}
+                    {% endif %}
+                </li>
+                {% endif %}
+
+            {% endif %}
+
+        </ul>
+
+    {% endif %}
+
+    <div id="change-details">
+        {% if request.resolver_match.view_name == 'change_profile' %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }} {# Render the form using paragraphs #}
+                <button id="profile-change" class="btn btn-primary" type="submit">Save Changes</button>
+            </form>
+        {% elif request.resolver_match.view_name == 'change_email' %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button id="profile-change" class="btn btn-primary" type="submit">Save Changes</button>
+            </form>
+        {% elif request.resolver_match.view_name == 'change_password' %}
+        <form method="post">
+            {% csrf_token %}
+        
+            <div class="form-group">
+                <label for="id_old_password">Old Password:</label>
+                <input type="password" name="old_password" id="id_old_password" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_new_password1">New Password:</label>
+                <input type="password" name="new_password1" id="id_new_password1" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_new_password2">Confirm New Password:</label>
+                <input type="password" name="new_password2" id="id_new_password2" class="form-control">
+            </div>
+        
+            <button id="profile-change" class="btn btn-primary" type="submit">Change Password</button>
+        </form>
+        {% endif %}
+
+    </div>
+</div>
+
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+{% endblock %}

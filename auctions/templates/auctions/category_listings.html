@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block title %}
+    {{ category_name }}
+{% endblock %}
+
+{% block body %}
+
+<h5 id="listing-header"><strong>Active Listings in {{ category_name }}</strong></h5>
+
+    {% if listings %}
+    <ul>
+        {% for listing in listings %}
+        <li><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No active listings found in this category.</p>
+    {% endif %}
+
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+{% endblock %}
+

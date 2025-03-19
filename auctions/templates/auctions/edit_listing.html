@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<h5 id="listing-header">Edit Listing: {{ listing.title }}</h5>
+
+{% if messages %}
+<ul class="messages list-unstyled">
+    {% for message in messages %}
+    <li class="message {% if message.tags %} {{ message.tags }} {% endif %}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="edit-container"> 
+    
+
+    <div id="make-changes">
+        <form action="{% url 'edit_listing' listing.id %}"  method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+            {% endfor %}
+            <div class="button-container">
+            <button class="btn btn-primary" id="add-button" type="submit">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+{% endblock %}

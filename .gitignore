@@ -1,0 +1,36 @@
+# Python-specific ignores
+venv/
+.venv/
+.env/
+__pycache__/
+*.pyc
+*.pyd
+*.egg-info/
+dist/
+build/
+*.sqlite3
+
+# Log files
+*.log
+
+# Swap files
+*.swp
+
+# OS (Windows) generated files
+Thumbs.db 
+
+# Dependency directories
+libs/
+vendor/
+dependencies/
+
+# Other project-specific ignores (add as needed)
+config.ini
+secrets.txt
+
+# Static files should also be ignored
+staticfiles/
+
+# Ignore Database and the Makefile
+db.sqlite3
+Makefile

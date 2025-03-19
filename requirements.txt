@@ -1,0 +1,9 @@
+Django>=4.2,<5.0
+djangorestframework>=3.12,<4.0
+psycopg2-binary==2.9.9
+django-cors-headers>=3.7,<4.0
+Pillow>=8.2,<10.0
+gunicorn>=20.0,<21.0  # Only needed for production
+requests>=2.25,<3.0
+django-environ==0.12.0 
+whitenoise==6.9.0 #or the latest version

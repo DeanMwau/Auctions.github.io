@@ -1,0 +1,62 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="most-bids-section">
+    <h5 id="listing-header"><strong>Most Bid Item</strong></h5>
+    {% if most_bids_listings %}
+        {% with most_bid_item=most_bids_listings.first %} {# Access the first item #}
+            <div class="most-bid-item">
+                {% if most_bid_item.image_urls %}
+                <img src="{{ most_bid_item.image_urls }}" alt="{{ most_bid_item.title }}" class="most-bid-image">
+                {% endif %}
+                
+                <div class="listing-item-details">
+                    <h5><a href="{% url 'listing' most_bid_item.id %}">{{ most_bid_item.title }}</a></h5>
+                    <p>{{ most_bid_item.description|truncatewords:50 }}</p> {# Show a snippet of the description #}
+                    <p>
+                        <strong>Current Highest Bid:</strong> 
+                        {% if most_bid_item.bids.first %}
+                            ${{ most_bid_item.current_price }}
+                            {% else%}
+                                No bids yet
+                            {% endif %}
+                    </p>
+                    <p><strong>Total Bids:</strong> {{ most_bid_item.bid_count }}</p>
+                </div>
+            </div>
+        {% endwith %}
+    {% else %}
+        {% if user.is_authenticated %}
+            <p class="message user">No bids yet, <a href="{% url 'account' %}">{{ user.username }}</a>. Explore active listings below and bid.</p>
+        {% else %}
+            <p class="message">No listings with bids yet. Explore active listings below and bid.</p>
+        {% endif %}
+    {% endif %}
+</div>
+
+<div class="listings-section">
+    <h5 id="listing-header"><strong>Active Listings</strong></h5>
+    <div class="listing-grid">
+        {% for listing in listings %}
+        <div class="listing-item">
+            {% if listing.image_urls %}
+                <img src="{{ listing.image_urls }}" alt="{{ listing.title }}" class="listing-image">
+            {% endif %}
+            <h5><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h5>
+            <p>{{ listing.description|truncatewords:10 }}</p>
+            <p>
+                <strong>Current Bid:</strong> 
+                {% if listing.bids.first %}
+                    ${{ listing.current_price }}
+                {% else %}
+                    No bids yet
+                {% endif %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+{% endblock %}

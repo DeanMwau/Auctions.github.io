@@ -1,0 +1,65 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div id="seller-active-listings">
+    <h5 id="listing-header"><strong>Active Listings by {{ user_profile.username }}</strong></h5>
+    <div class="index-listing">
+        {% if listings %}
+            {% for listing in listings %}
+            {% if listing.status == "active" %}
+                <div class="listing-item">
+
+                    {% if listing.image_urls %}
+                        <a href="{% url 'listing' listing.id %}">
+                            <img src="{{ listing.image_urls }}" alt="{{ listing.title }}" class="listing-image">
+                        </a>
+                    {% endif %}
+                    <div class="listing-details">
+                        <h5><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h5>
+                        <p>{{listing.description}} </p>
+                        <p><strong>Current Price:</strong> ${{ listing.current_price }}</p>
+                        <p><strong>Status:</strong> {{ listing.status }}</p>
+                        <p><strong>Date Listed:</strong> {{ listing.date_listed }}</p>
+                    </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+                <p>No active listings found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div id="seller-closed-listings">
+    <h5 id="listing-header"><strong>Closed Listings by {{ user_profile.username }}</strong></h5>
+    <div class="index-listing">
+        {% if listings %}
+            {% for listing in listings %}
+                {% if listing.status == "closed" %}
+                <div class="listing-item">
+
+                    {% if listing.image_urls %}
+                        <a href="{% url 'listing' listing.id %}">
+                            <img src="{{ listing.image_urls }}" alt="{{ listing.title }}" class="listing-image">
+                        </a>
+                    {% endif %}
+                    <div class="listing-item-details">
+                        <h5><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h5>
+                        <p>{{listing.description}} </p>
+                        <p><strong>Current Price:</strong> ${{ listing.current_price }}</p>
+                        <p><strong>Status:</strong> {{ listing.status }}</p>
+                        <p><strong>Date Listed:</strong> {{ listing.date_listed }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>No closed listings found.</p>
+        {% endif %}
+    <div>
+</div>
+
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+{% endblock %}

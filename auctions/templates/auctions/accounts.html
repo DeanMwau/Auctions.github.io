@@ -1,0 +1,95 @@
+{% extends "auctions/layout.html" %} 
+{% load static %}
+
+{% block body %}
+
+<div class="account-container">
+
+    {% if messages %}
+    <ul class="messages list-unstyled">
+        {% for message in messages %}
+        <li class="message {% if message.tags %} {{ message.tags }} {% endif %}">{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div id="profile">
+        <h6>Profile</h6>
+        <hr id="first-hr">
+        <p><strong>Seller ID:</strong> <span>{{ user.id }}</span></p>
+        <hr>
+        <p><strong>First Name:</strong> <span>{{ user.first_name }}</span></p>
+        <hr>
+        <p><strong>Last Name:</strong> <span>{{ user.last_name }}</span></p>
+        <hr>
+        <p>
+            <strong>Location:</strong> 
+            <span>
+                {% if user.userprofile.location %} {{ user.userprofile.location }} {% else %} Not
+            specified {% endif %} 
+            </span>
+        </p>
+        <hr>
+        <a href="{% url 'change_profile' %}">Change Profile Details</a>
+    </div>
+
+    <div id="info" >
+        <h6>Contact info</h6>
+        <hr id="first-hr">
+        <p><strong>Email:</strong> <span>{{ user.email }}</span></p>
+        <hr>
+        <a href="{% url 'change_email' %}">Change Email</a>
+    </div>
+
+    <div id="security" >
+        <h6>Security</h6>
+        <hr id="first-hr">
+        <p><strong>Username:</strong> <span>{{ user.username }}</span></p>
+        <hr>
+        <p><strong>Password:</strong> <span id="dots">. . . . . . . .</span></p>
+        <hr>
+        <a href="{% url 'change_password' %}">Change Password</a>
+    </div>
+
+    <div id="active" >
+        <h6>Active Listings</h6>
+        <hr id="first-hr">
+        {% if listings %}
+            <ul class="messages list-unstyled">
+                {% for listing in listings %}
+                    {% if listing.status == "active" %}
+                        <li class="listing-item">
+                            <a href="{% url 'listing' listing.id %}"><span>{{ listing.title }}</span></a>
+                            <a href="{% url 'edit_listing' listing.id %}" >Edit</a>
+                            <a href="{% url 'delete_listing' listing.id %}"
+                                onclick="return confirm('Are you sure you want to delete this listing?')">Delete</a>
+                        </li>
+                        <hr>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no active listings.</p>
+        {% endif %}
+    </div>
+
+
+    <div id="closed" >
+        <h6>Closed Listings</h6>
+        {% if listings %}
+        <ol>
+            {% for listing in listings %}
+                {% if listing.status == "closed" %}
+                    <li>
+                        <a href="{% url 'listing' listing.id %}">{{ listing.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+        {% else %}
+            <p>You have no closed listings.</p>
+        {% endif %}
+    </div>
+</div>
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+{% endblock %}

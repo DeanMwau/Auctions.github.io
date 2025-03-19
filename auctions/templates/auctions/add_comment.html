@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Add Comment
+{% endblock %}
+
+{% block body %}
+
+<h5 id="listing-header">Add a Comment</h5>
+
+<div id="add-comment-container">
+
+    
+    {% if messages %}
+    <ul class="messages list-unstyled">
+        {% for message in messages %}
+        <li class="message {% if message.tags %} {{ message.tags }} {% endif %}">{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div id="addcomment">
+        <form action="{% url 'addcomment' listing.id %}" method="post" >
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea name="comment_text" placeholder="Enter your comment" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+    </div>
+
+</div>
+
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+
+
+<div id="single-listing">
+    
+
+    <h5 id="listing-header"><strong>{{listing.title}}</strong></h5>
+
+    {% if messages %}
+    <ul class="messages list-unstyled">
+        {% for message in messages %}
+        <li class="message {% if message.tags %} {{ message.tags }} {% endif %}">{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <div class="index-listing">
+        <div class="listing-item">
+
+            {% if listing.image_urls %}
+                <img src="{{ listing.image_urls }}" alt="{{ listing.title }} " class="listing-image">
+            {% endif %}
+
+            <div class="listing-item-details">
+                <p> {{listing.description}} </p>
+                <p><strong>Starting Bid: </strong>${{ listing.starting_price }}</p>
+
+            {% if listing_bids %}
+                {% if listing.status == "active" %}
+                    <p><strong>Bids:</strong> {{ listing_bids|length }} bid(s) so far.</p>
+                {% else %}
+                    <p><strong>Bids:</strong> This listing received {{ listing_bids|length }} bid(s).</p>
+                {% endif %}
+
+                <p><strong>Current Price/Highest Bid:</strong> ${{ listing_bids.first.bid_amount }}</p>
+
+            {% else %}
+                <p>No bids yet</p>
+            {% endif %}
+
+            <ul class="list-unstyled">
+                <li>
+                    <strong>Listed by: </strong> 
+                    <a href="{% url 'seller' listing.seller.username %}">{{listing.seller.username}}</a>
+                </li>
+                {% if listing.category %}
+                    <li><strong>Category: </strong>{{ listing.category}} </li>
+                {% else %}
+                    <li><strong>Category: </strong> No Category Listed</li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+        <div class="bid-container">
+            {% if user.is_authenticated and user != listing.seller and listing.status == "active" %}
+                <form action="{% url 'placebid' listing.id%}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="number" name="bidamount" placeholder="Bid" required>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Place bid">
+                </form>
+            {% endif %}
+
+            {% if user.is_authenticated and user != listing.seller and listing.status == "active" %}
+                {% if in_watchlist %}
+                    <form action="{% url 'removewatchlist' listing.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-primary" type="submit">Remove from Watchlist</button>
+                    </form>
+
+                {% else %}
+                    <form action="{% url 'addwatchlist' listing.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-primary" type="submit">Add to Watchlist</button>
+                    </form>
+                    
+                {% endif %}
+            {% endif %}
+
+            {% if user.is_authenticated  and listing.seller == request.user and listing.status == "active" %}
+                <form action="{% url 'closebidding' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <button id="close-bidding-button" class="btn btn-primary" type="submit" >Close Bidding</button>
+                </form>                
+            {% endif %}
+            
+        </div>   
+
+    <h5> <strong>Comments</strong> </h5>
+    <div id="comment-section-container">
+        {% if comments %}
+            {% for comment in comments %}
+                <li>
+                    <strong>{{ comment.user }}:</strong>
+                    <span><em>{{ comment.comment }}</em></span><br>
+                    <span id="time_stamp">({{ comment.comment_date }})</span>
+                </li>
+            {% endfor %} 
+        {%else%}
+            <p>No Comments</p> 
+        {% endif %}
+    </div>
+
+    <div id="comment">
+        {% if user.is_authenticated and listing.status == "active" %}
+            <a href="{% url 'addcomment' listing.id %}">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Comment</button>
+            </a>
+        {% endif %}
+    </div>
+
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+    <script>
+        document.getElementById("close-bidding-button").addEventListener("click", function (event) {
+            // Show confirmation popup
+            let confirmClose = confirm("Are you sure you want to close this listing?");
+
+            if (!confirmClose) {
+                event.preventDefault(); // Prevent form submission if user cancels
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Create Listing
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-3">
+    {% if messages %}
+    <ul class="messages list-unstyled">
+        {% for message in messages %}
+        <li class="message {% if message.tags %} {{ message.tags }} {% endif %}">{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h5 id="listing-header">Create a Listing</h5>
+
+    <div id="listing-container" class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="{% url 'create' %}" method="post" class="p-4 border rounded shadow-sm bg-light">
+                {% csrf_token %}
+
+                <div class="mb-3 row">
+                    <label for="title" class="col-sm-3 col-form-label text-end">Title:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="title" id="title" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="starting_price" class="col-sm-3 col-form-label text-end">Starting Bid:</label>
+                    <div class="col-sm-9">
+                        <input type="number" name="starting_price" id="starting_price" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="description" class="col-sm-3 col-form-label text-end">Description:</label>
+                    <div class="col-sm-9">
+                        <textarea name="description" id="description" class="form-control" required></textarea>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="image_urls" class="col-sm-3 col-form-label text-end">Image Url:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="image_urls" id="image_urls" class="form-control">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="status" class="col-sm-3 col-form-label text-end">Status:</label>
+                    <div class="col-sm-9">
+                        <select name="status" id="status" class="form-control" required>
+                            {% for value, label in STATUS_CHOICES %}
+                            <option value="{{ value }}">{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="location" class="col-sm-3 col-form-label text-end">Location:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="location" id="location" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="category" class="col-sm-3 col-form-label text-end">Category:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="category" id="category" class="form-control">
+                    </div>
+                </div>
+
+                <!-- Centering the Submit Button -->
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit" id="add-button">Create Listing</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet"> 
+
+
+{% endblock %}

@@ -1,0 +1,613 @@
+body {
+    padding: 10px;
+}
+
+html, body {
+    font-family: 'PT Sans', sans-serif;
+    background-color: #D9DEE1;
+    font-size: 16px;
+}
+
+/* Styles all messages in the project (both success and error)*/
+.message {
+    color: green;
+    margin-bottom: 0.1px;
+    padding: 5px;
+    background: #fff3cd;
+    border-radius: 5px;
+    list-style: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.message.error {
+    color: red;
+    margin-bottom: 0.1px;
+    padding: 5px;
+    background: #fff3cd;
+    border-radius: 5px;
+    list-style: none;
+    width: 100%;
+}
+
+.message.success {
+    color: green;
+    margin-bottom: 0.1px;
+    padding: 5px;
+    background: #fff3cd;
+    border-radius: 5px;
+    list-style: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 13px;
+}
+
+.form-label {
+    display: block; 
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #333; 
+}
+
+.form-input {
+    width: 50%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    margin-bottom: 10px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #007bff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+#add-button {
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px;
+    height: 30px;
+}
+
+.listing-image {
+    margin: 15px;
+}
+
+.bid-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.bid-container form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bid-container .btn {
+    padding: 5px 8px;  /* Reduce padding */
+    font-size: 12px;  /* Reduce font size */
+    height: 30px;  /* Adjust height */
+    margin-bottom: 5px;
+}
+
+.bid-container #close-bidding-button {
+    margin-top: 15px;
+}
+
+.bid-container input[type="number"] {
+    margin-top: 10px;
+    padding: 4px;    
+    font-size: 12px;
+}
+
+#time_stamp {
+    font-size: smaller; 
+    color: gray;
+}
+
+#comment button {
+    margin-top: 10px;
+    font-size: 12px;
+    padding: 5px;
+    height: 30px;
+}
+
+#listing-container .form-group {
+    margin-bottom: 2px;
+}
+
+
+#listing-container {
+    margin-top: 10px;
+}
+
+#addcomment button, 
+#change-details button {
+    margin-top: 2px;
+    font-size: 12px;
+    padding: 5px;
+    height: 30px;
+    border-color: none;
+}
+
+#change-details button:hover, 
+#addcomment button:hover, 
+#register:hover, #login:hover, 
+#comment button:hover, 
+.bid-container .btn:hover,
+#add-button:hover  {
+    background-color: #029e31;
+}
+
+#add-comment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px; /* Adjust width as needed */
+    margin: 15px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#add-comment-container #addcomment {
+    width: 100%;
+}
+
+#add-comment-container textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#add-comment-container textarea:focus {
+    border-color: #ced4da;;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+#comment-section-container li {
+    list-style-type: none;
+}
+
+#single-closed #comment-section-container {
+    margin-top: 15px;
+}
+
+#listing-header {
+    margin-top: 10px;
+    text-align: center;
+    display: block;  
+    font-weight: bold;
+}
+
+.navbar {
+    border-radius: 10px;
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgb(0, 123, 255, .5);
+    border-color: rgb(0, 123, 255, .1); /* Change the border color */
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(0, 123, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(0, 123, 255);
+}
+ 
+.navbar-dark .navbar-brand:hover {
+    color: green;
+}
+
+.navbar-dark .navbar-brand {
+    color: rgb(0, 123, 255);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: green;
+}
+.navbar-dark .navbar-nav .active>.nav-link, 
+.navbar-dark .navbar-nav .nav-link.active, 
+.navbar-dark .navbar-nav .nav-link.show, 
+.navbar-dark .navbar-nav .show>.nav-link,
+.container .navbar-brand.active,
+.nav-item.active .profile-icon a:last-child {
+    color: green;
+}
+
+.profile-icon:hover {
+    background-color: #D9DEE1;
+    border-radius: 5px;
+}
+
+.profile-icon a:last-child {
+    text-transform: capitalize; 
+}
+
+#profile p strong, 
+#info p strong, 
+#security p strong {
+    color: #868C90;
+    font-size: small;
+}
+
+#active li, 
+#closed li  {
+    font-size: 15px;
+}
+
+.account-container {
+    display: flex;
+    flex-direction: column; /* Stack divs vertically */
+}
+
+.account-container div {
+    max-width: 1100px; /* Limits the width of the divs */
+    width: 100%; /* Ensures responsiveness */
+    margin: 15px auto; /* Centers divs and adds spacing */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.account-container #profile,
+.account-container #info, 
+.account-container #security,
+.account-container #active ,
+.account-container #closed { 
+    background-color: #f8f9fa; 
+}
+
+hr {
+    background-color:black;
+    margin: 5px 0;
+    max-width: 70%;
+}
+
+#active hr {
+    background-color:black;
+    margin-top: 2px;
+    max-width: 70%;
+}
+
+#active #first-hr {
+    background-color: #f8f9fa; /* Change the color of the first hr */
+}
+
+#profile p strong, 
+#info p strong, 
+#security p strong {
+    display: inline-block;
+    min-width: 350px; /* Adjust this as needed */
+}
+
+#active a {
+    display: inline-block;
+    min-width: 230px; /* Adjust this as needed */
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.account-container a:hover {
+    color: green;
+}
+
+@media screen and (max-width: 768px) {
+    #profile p strong, 
+    #info p strong, 
+    #security p strong {
+        display: inline-block;
+        min-width: 200px; /* Adjust this as needed */
+    }
+}
+
+@media screen and (max-width: 768px) {
+     #active a {
+        display: inline-block;
+        min-width: 150px; /* Adjust this as needed */
+    }
+}
+
+#profile p, 
+#info p, 
+#security p,
+#active a {
+    margin-bottom: 3px; /* Adds spacing between rows */
+}
+
+#first-hr {
+    background-color: #f8f9fa; /* Change the color of the first hr */
+}
+
+#dots {
+    font-weight: bolder;
+}
+
+
+/* Style change details div */
+#change-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; /* Adjust width as needed */
+    margin: 10px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#change-details {
+    width: 99.5%; /* Ensures form container stretches full width */
+    display: flex;
+    margin-left: 4px;
+}
+
+#change-details form {
+    width: 100%;
+    flex-direction: column;
+}
+
+#change-details form label {
+    flex: 1; /* Makes labels take up equal space */
+    text-align: left;
+}
+
+#change-details form input {
+    flex: 2; /* Inputs take up more space than labels */
+    width: 100%; /* Ensures fields stretch */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#change-details form input:focus {
+    border: 2px solid rgb(188, 207, 227);
+    outline: none;
+    box-shadow: 0 0 5px rgba(188, 207, 227, 0.7);
+}
+
+.bid-container form input {
+    border-radius: 7px;
+    outline: none;
+    border-color: rgb(204, 204, 204); 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+.bid-container form input:focus {
+    border: 2px solid rgb(134, 143, 153);
+    outline: none;
+    box-shadow: 0 0 5px rgba(188, 207, 227, 0.7);
+    border-radius: 7px;
+}
+
+.most-bid-item {
+    padding: 15px;
+    background-color: #f8f9fa; 
+    border-radius: 15px;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.most-bid-image {
+    width: 200px;
+    object-fit: cover;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.most-bid-item .listing-item-details {
+    flex-grow: 1;
+    padding-left: 10px;
+    flex-direction: column;
+    display: flex;
+}
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.listing-grid .listing-item {
+    border: 1px solid #eee;
+    padding: 15px;
+    text-align: center;
+    background-color: #f8f9fa; 
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.listing-grid .listing-image {
+    max-width: 100%;
+    height: 200px;  
+     object-fit: cover;
+    box-sizing: border-box;
+}
+
+/*styling the index page*/
+.index-listing {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+} 
+
+.index-listing .listing-item {
+    padding: 15px;
+    background-color: #f8f9fa; 
+    border-radius: 15px;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.index-listing .listing-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(7, 7, 7, 0.2);
+}
+
+.index-listing .listing-item:hover h5 a,
+.index-listing .listing-item-details:hover li a,
+.most-bids-section .user a:hover {
+    color: green;
+}
+
+.listing-grid .listing-item,
+.most-bid-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-grid .listing-item:hover,
+.most-bid-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(10, 10, 10, 0.2);
+}
+
+.listing-grid .listing-item:hover h5 a,
+.most-bid-item:hover h5 a {
+    color: green;
+}
+
+.index-listing .listing-image {
+    width: 200px;
+    object-fit: cover;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.index-listing .listing-item-details {
+    flex-grow: 1;
+    padding-left: 10px;
+    flex-direction: column;
+    display: flex;
+}
+
+.listing-item-details * {
+    margin-bottom: 8px; 
+}
+
+
+@media (max-width: 768px) {
+    .index-listing .listing-item {
+        flex-direction: column;
+    }
+
+    .index-listing .listing-image {
+        width: 100%; 
+        height: 200px; 
+    }
+
+    .index-listing .listing-item div {
+        padding-left: 0; 
+    }
+}
+
+
+/*  Style the edit_listing page*/
+.edit-container {
+    display: flex;
+    flex-direction: column;  
+    width: 100%;
+    max-width: 600px; /* Adjust width as needed */
+    margin: 10px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+   
+}
+
+.edit-container #make-changes {
+    width: 100%;
+}
+
+.edit-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form fields */
+}
+
+.edit-container label {
+    width: 30%; /* Adjust as needed */
+    text-align: left;
+    font-weight: bold;
+}
+
+.edit-container textarea {
+    max-height: 120px;  
+
+}
+
+.edit-container input, .edit-container textarea {
+    width: 70%; /* Ensure all inputs have the same width */
+    font-size: 1rem;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.edit-container input:focus, .edit-container textarea:focus {
+    border-color: #ced4da;;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+#make-changes .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1px; /* Space between label & input */
+    margin-bottom: 5px;
+}
+
+#make-changes .form-group label {
+    width: 30%;
+    text-align: left;
+    font-weight: bold;
+}
+
+#make-changes .form-group input, 
+#make-changes .form-group textarea {
+    width: 70%;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+}
+
+
+

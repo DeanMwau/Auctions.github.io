@@ -1,0 +1,53 @@
+{% extends "auctions/layout.html" %}
+{% load custom_filters %}
+{% load static %}
+
+{% block body %}
+<div id="watchlist_container">
+    <h5 id="listing-header"><strong>Watchlist</strong></h5>
+    <div class="index-listing">
+        {% if listings %}
+            {% for listing in listings %}
+            <div class="listing-item">
+                {% if listing.image_urls %}
+                
+                    <a href="{% url 'listing' listing.id %}">
+                        <img src="{{ listing.image_urls }}" alt="{{ listing.title }}" class="listing-image">
+                    </a>
+
+                {% endif %}
+
+                <div class="listing-item-details">
+                <h5><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h5>
+
+                <p> {{listing.description}} </p>
+                <p><strong>Starting Bid:</strong> ${{ listing.starting_price }}</p>
+
+                {% if winning_bids|get_item:listing.id %}
+                <p><strong>Winning Bid Was:</strong> 
+
+                    ${{ winning_bids|get_item:listing.id }}
+
+                    {% if user_won_listings|get_item:listing.id %}
+                        (You were the winner)
+                    {% endif %}
+                
+                </p>
+                {% else %}
+                <p><strong>Bids: </strong>No Bids Yet
+                {% endif %}
+                
+                <p><strong>Status:</strong> {{ listing.status }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p> No listing in your watchlist</p>
+        {% endif %}
+    </div>
+</div>
+
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+{% endblock %}
+

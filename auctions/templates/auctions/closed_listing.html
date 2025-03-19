@@ -1,0 +1,64 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Closed Listing
+{% endblock %}
+
+{% block body %}
+{% if winning_bid and user_bid and user_bid.bid_amount == winning_bid.bid_amount %}
+        <li class="message">Your bid won this auction!</li>
+{% endif %}
+
+<div id="single-closed">
+    <h5 id="listing-header"><strong>{{listing.title}}</strong></h5>
+    <div class="index-listing" >
+        <div class="listing-item">
+
+            {% if listing.image_urls %}
+
+                <img src="{{ listing.image_urls }}" alt="{{ listing.title }}" class="listing-image">
+        
+            {% endif %}
+            
+            <div class="listing-item-details">
+                <p>{{listing.description}} </p>
+                <p><strong>Starting Price:</strong> ${{ listing.starting_price }}</p>
+                <p><strong>Bids:</strong> There was/were {{ listing_bids|length }} bid(s).</p>
+                <p><strong>Highest Bid:</strong> ${{ listing_bids.first.bid_amount }}</p>
+
+                <ul class="list-unstyled">
+                    <li class="mb-2"><strong>Was listed by:</strong> {{listing.seller.username}}</li>
+                    <li><strong>Category:</strong>
+                        {% if listing.category %}
+                            {{ listing.category }} 
+                        {% else %}
+                            No Category Listed
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        
+        </div>
+    </div>
+
+    
+    <div id="comment-section-container">
+        <h5> <strong>Comments</strong> </h5>
+        {% if comments %}
+        {% for comment in comments %}
+        <li>
+            <strong>{{ comment.user }}:</strong>
+            <span><em>{{ comment.comment }}</em></span><br>
+            <span id="time_stamp">({{ comment.comment_date }})</span>
+        </li>
+        {% endfor %}
+        {%else%}
+        <p>No Comments</p>
+        {% endif %}
+    </div>
+
+</div>
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+{% endblock %}
