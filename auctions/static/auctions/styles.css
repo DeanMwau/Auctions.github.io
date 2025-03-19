@@ -140,6 +140,12 @@ html, body {
     margin-top: 10px;
 }
 
+@media (max-width: 768px) {
+    .col-form-label.text-end {
+        text-align: left;
+    }
+}
+
 #addcomment button, 
 #change-details button {
     margin-top: 2px;
