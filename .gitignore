@@ -28,9 +28,6 @@ dependencies/
 config.ini
 secrets.txt
 
-# Static files should also be ignored
-staticfiles/
-
 # Ignore Database and the Makefile
 db.sqlite3
 Makefile
