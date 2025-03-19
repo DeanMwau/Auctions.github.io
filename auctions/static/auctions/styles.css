@@ -430,8 +430,19 @@ hr {
     margin: 10px auto;
 }
 
-.most-bid-image {
-    width: 150px;
+.most-bid-item .listing-item {
+    padding: 15px;
+    background-color: #f8f9fa; 
+    border-radius: 15px;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.most-bid-item .most-bid-image {
+    width: 180px;
     object-fit: cover;
     padding: 5px;
     box-sizing: border-box;

@@ -8,22 +8,24 @@
     {% if most_bids_listings %}
         {% with most_bid_item=most_bids_listings.first %} {# Access the first item #}
             <div class="most-bid-item">
-                {% if most_bid_item.image_urls %}
-                <img src="{{ most_bid_item.image_urls }}" alt="{{ most_bid_item.title }}" class="most-bid-image">
-                {% endif %}
-                
-                <div class="listing-item-details">
-                    <h5><a href="{% url 'listing' most_bid_item.id %}">{{ most_bid_item.title }}</a></h5>
-                    <p>{{ most_bid_item.description|truncatewords:50 }}</p> {# Show a snippet of the description #}
-                    <p>
-                        <strong>Current Highest Bid:</strong> 
-                        {% if most_bid_item.bids.first %}
-                            ${{ most_bid_item.current_price }}
-                            {% else%}
-                                No bids yet
-                            {% endif %}
-                    </p>
-                    <p><strong>Total Bids:</strong> {{ most_bid_item.bid_count }}</p>
+                <div class="listing-item">
+                    {% if most_bid_item.image_urls %}
+                    <img src="{{ most_bid_item.image_urls }}" alt="{{ most_bid_item.title }}" class="most-bid-image">
+                    {% endif %}
+                    
+                    <div class="listing-item-details">
+                        <h5><a href="{% url 'listing' most_bid_item.id %}">{{ most_bid_item.title }}</a></h5>
+                        <p>{{ most_bid_item.description|truncatewords:50 }}</p> {# Show a snippet of the description #}
+                        <p>
+                            <strong>Current Highest Bid:</strong> 
+                            {% if most_bid_item.bids.first %}
+                                ${{ most_bid_item.current_price }}
+                                {% else%}
+                                    No bids yet
+                                {% endif %}
+                        </p>
+                        <p><strong>Total Bids:</strong> {{ most_bid_item.bid_count }}</p>
+                    </div>
                 </div>
             </div>
         {% endwith %}
